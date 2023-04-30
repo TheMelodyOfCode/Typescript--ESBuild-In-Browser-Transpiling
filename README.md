@@ -1,9 +1,12 @@
 # ESBuild In-Browser Bundling
 
+## Description  
 
+To provide a well-structured and maintainable codebase by centralizing all Material-UI imports and Redux logic. 
 
 ## Key Features
 
+> - Centralized Material-UI imports and helper functions for easy maintenance in case of major changes  
 > - 
 > - 
 
