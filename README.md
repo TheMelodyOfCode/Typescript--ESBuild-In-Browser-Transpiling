@@ -1,4 +1,4 @@
-# ESBuild In-Brwoser Bundling
+# ESBuild In-Browser Bundling
 
 
 
@@ -12,10 +12,21 @@
 
 This project uses the following dependencies:  
 
-### XXX
+### ESBuild-wsm  
 
-> - 
-> - 
+> - This is the cross-platform WebAssembly binary for esbuild, a JavaScript bundler and minifier. 
+> - Install: `npm i esbuild-wasm`  
+
+  
+### Material-UI
+
+> - [Material-UI](https://material-ui.com/)
+> - Install: `npm install @mui/material @emotion/react @emotion/styled`
+
+### Icons
+
+> - Material-UI Icons
+> - Install: `npm i @mui/icons-material`
 
 ### XXX
 
