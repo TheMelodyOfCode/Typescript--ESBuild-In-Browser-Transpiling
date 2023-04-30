@@ -24,7 +24,7 @@ This project uses the following dependencies:
 ### Material-UI
 
 > - [Material-UI](https://material-ui.com/)
-> - Install: `npm install @mui/material @emotion/react @emotion/styled`
+> - Install: `npm install @mui/material @emotion/react @emotion/styled @mui/joy`
 
 ### Icons
 
