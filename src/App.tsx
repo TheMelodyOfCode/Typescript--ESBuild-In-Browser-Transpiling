@@ -57,7 +57,7 @@ const App: React.FC = () => {
     noValidate
     autoComplete="off"
     >
-      <h1>ESBuild Compiler</h1>
+      <h1>ESBuild Transpiler</h1>
       <h3>Try something like: </h3>
       <code>{'async ()=>{}'}</code>
       <p>or:</p>
