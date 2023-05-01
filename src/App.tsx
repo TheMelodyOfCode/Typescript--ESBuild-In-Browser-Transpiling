@@ -2,15 +2,13 @@ import * as React from 'react';
 import * as esbuild from 'esbuild-wasm'
 
 import { MUIBox, MUIButton, MUITextField } from './utils/MaterialUI/MUI';
-import { ButtonStyles } from './utils/styles/Button.styles';
+import { ButtonStyles,} from './utils/CustomStyles/CustomStyles';
 
 
 const App: React.FC = () => {
   const ref = React.useRef<any>();
   const [input, setInput] = React.useState('');
   const [code, setCode] = React.useState('');
-  // console.log(input)
-  // console.log(code)
 
   const startService = async () => {
     ref.current = await esbuild.startService({
@@ -43,10 +41,15 @@ const App: React.FC = () => {
   };
 
   return (
+
+    <>
     <MUIBox
     component="form"
     sx={{
-      '& .MuiTextField-root': { m: 1, width: '55ch' },
+      '& .MuiTextField-root': {
+        m: 1,
+        width: '45ch'
+      },
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
@@ -54,12 +57,20 @@ const App: React.FC = () => {
     noValidate
     autoComplete="off"
     >
+      <h1>ESBuild Compiler</h1>
+      <h3>Try something like: </h3>
+      <code>{'async ()=>{}'}</code>
+      <p>or:</p>
+      <code>{'const App =()=>{render(<h1>Hello World</h1>)}'}</code>
+      <br/>
+      <h4>Let's go:</h4>
         <MUITextField
-          id="outlined-multiline-static"
-          label="Code-Box"
+          id="outlined-multiline-flexible"
+          label="Put some Code in the Box"
           multiline
-          rows={15}
+          rows={4}
           variant="outlined"
+          color="secondary"
           value={input}
           onChange={handleTextChange}
         />
@@ -69,10 +80,12 @@ const App: React.FC = () => {
         onClick={handleClick}
         sx={ButtonStyles.submit}
       >
-        Search
+        Submit
       </MUIButton>
       <pre>{code}</pre>
     </MUIBox>
+    </>
+
   );
 }
 
