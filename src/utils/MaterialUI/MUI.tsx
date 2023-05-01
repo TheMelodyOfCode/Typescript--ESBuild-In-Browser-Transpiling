@@ -36,15 +36,15 @@ const MUIBox: React.FC<MUIBoxProps> = ({ children, ...props }) => {
 interface CustomTextFieldProps {
   value: string;
   sx?: SxProps;
-  onValueChange: (value: string) => void
+  onChange: (value: string) => void
 }
 
 type MUITextFieldProps = CustomTextFieldProps & Omit<TextFieldProps, 'onChange'>;
 
 
-const MUITextField: React.FC<MUITextFieldProps> = ({ value, onValueChange, ...props }) => {
+const MUITextField: React.FC<MUITextFieldProps> = ({ value, onChange, ...props }) => {
   const handleTextFieldChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    onValueChange(event.target.value);
+    onChange(event.target.value);
   };
 
   return (

@@ -1,22 +1,45 @@
 import * as React from 'react';
-import { MUIBox, MUIButton, MUITextField } from './utils/MaterialUI/MUI';
+import * as esbuild from 'esbuild-wasm'
 
+import { MUIBox, MUIButton, MUITextField } from './utils/MaterialUI/MUI';
 import { ButtonStyles } from './utils/styles/Button.styles';
 
 
 const App: React.FC = () => {
+  const ref = React.useRef<any>();
   const [input, setInput] = React.useState('');
   const [code, setCode] = React.useState('');
+  // console.log(input)
+  // console.log(code)
 
+  const startService = async () => {
+    ref.current = await esbuild.startService({
+      worker: true,
+      wasmURL: '/esbuild.wasm',
+    });
+  };
 
+  React.useEffect(() => {
+    startService();
+  }, []);
+  
 
-
+  
   const handleTextChange = (value: string) => {
     setInput(value);
   };
 
-  const handleClick = () => {
-    console.log('Button clicked', input);
+  const handleClick = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    event.preventDefault(); 
+    if (!ref.current) {
+      return;
+    }
+
+    const result = await ref.current.transform(input, {
+      loader: 'jsx',
+      target: 'es2015',
+      });
+    setCode(result.code);
   };
 
   return (
@@ -38,7 +61,7 @@ const App: React.FC = () => {
           rows={15}
           variant="outlined"
           value={input}
-          onValueChange={handleTextChange}
+          onChange={handleTextChange}
         />
 
       <MUIButton
